@@ -1,0 +1,109 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        int mn=a.length()<b.length()?a.length():b.length();
+        string res;
+        int i=a.length()-1, j=b.length()-1;
+        int carry=0;
+        while(mn--){
+            if(a[i]=='1'){
+                if(b[j]=='1'){
+                    if(carry==1){
+                        res='1'+res;
+                        carry=1;
+                    }
+                    else{
+                        res='0'+res;
+                        carry=1;
+                    }
+                }
+                else{
+                    if(carry==1){
+                        res='0'+res;
+                        carry=1;
+                    }
+                    else{
+                        res='1'+res;
+                        carry=0;
+                    }
+                }
+            }
+            else if(a[i]=='0'){
+                if(b[j]=='1'){
+                    if(carry==1){
+                        res='0'+res;
+                        carry=1;
+                    }
+                    else{
+                        res='1'+res;
+                        carry=0;
+                    }
+                }
+                else{
+                    if(carry==1){
+                        res='1'+res;
+                        carry=0;
+                    }
+                    else{
+                        res='0'+res;
+                        carry=0;
+                    }
+                }
+            }
+            i--;
+            j--;
+        }
+        int temp=i+1;
+        while(temp--){
+            if(a[i]=='1'){
+                if(carry==1){
+                    res='0'+res;
+                    carry=1;
+                }
+                else{
+                    res='1'+res;
+                    carry=0;
+                }
+            }
+            else{
+                if(carry==1){
+                    res='1'+res;
+                    carry=0;
+                }
+                else{
+                    res='0'+res;
+                    carry=0;
+                }
+            }
+            i--;
+        }
+        temp=j+1;
+        while(temp--){
+            if(b[j]=='1'){
+                if(carry==1){
+                    res='0'+res;
+                    carry=1;
+                }
+                else{
+                    res='1'+res;
+                    carry=0;
+                }
+            }
+            else{
+                if(carry==1){
+                    res='1'+res;
+                    carry=0;
+                }
+                else{
+                    res='0'+res;
+                    carry=0;
+                }
+            }
+            j--;
+        }
+        if(carry){
+            res='1'+res;
+        }
+        return res;
+    }
+};
