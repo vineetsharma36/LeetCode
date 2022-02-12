@@ -1,16 +1,8 @@
 class Solution {
 public:
-    bool check(vector<int> &v, int n){
-        for(int i=0;i<n;i++){
-            if(v[i]%(i+1) && (i+1)%v[i])
-                return false;
-        }
-        return true;
-    }
     void perm(int ind, int n, vector<int> &v, int &res){
         if(ind==n){
-            if(check(v, n))
-                res++;
+            res++;
             return;
         }
         for(int i=ind;i<n;i++){
