@@ -8,7 +8,6 @@ public:
                 cout<<i<<" ";
                 flag=true;
                 i++;
-                
                 continue;
             }
             else if(x=='-'){
@@ -17,11 +16,9 @@ public:
                 continue;
             }
             if(!flag){
-                //a1
                 a1=a1*10+(x-'0');
             }
             else{
-                //b1
                 if(x=='i')
                     continue;
                 b1=b1*10+(x-'0');
@@ -45,11 +42,9 @@ public:
                 continue;
             }
             if(!flag){
-                //a2
                 a2=a2*10+(x-'0');
             }
             else{
-                //b2
                 if(x=='i')
                     continue;
                 b2=b2*10+(x-'0');
@@ -59,8 +54,6 @@ public:
             }
             i++;
         }
-        cout<<endl<<a1<<" "<<b1<<endl;
-        cout<<a2<<" "<<b2<<endl;
         if(f1)
             a1*=-1;
         if(f2)
@@ -69,8 +62,6 @@ public:
             a2*=-1;
         if(f4)
             b2*=-1;
-        cout<<endl<<a1<<" "<<b1<<endl;
-        cout<<a2<<" "<<b2<<endl;
         return to_string(a1*a2-b1*b2)+"+"+to_string(a1*b2+a2*b1)+"i";
     }
 };
