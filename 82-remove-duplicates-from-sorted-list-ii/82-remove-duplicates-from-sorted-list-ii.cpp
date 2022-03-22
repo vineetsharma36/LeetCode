@@ -14,22 +14,36 @@ public:
         if(head==NULL || head->next==NULL)
             return head;
         ListNode* fast=head;
+        ListNode* prev=new ListNode(-101,fast);
+        ListNode* nxt=fast->next;
         ListNode* temp=new ListNode(-1);
         ListNode* slow=new ListNode(-1,temp);
-        map<int,int> mp;
         while(fast)
         {
-            mp[fast->val]++;
-            fast=fast->next;
-        }
-        for(auto x:mp)
-        {
-            if(x.second==1)
-            {
-                temp->next=new ListNode(x.first); 
+            if(nxt==NULL){
+                if(fast->val!=prev->val)
+                {
+                    temp->next=new ListNode(fast->val); 
+                    temp=temp->next;
+                }
+                break;
+            }
+            if(fast->val!=prev->val && fast->val!=nxt->val){
+                temp->next=new ListNode(fast->val); 
                 temp=temp->next;
             }
+            fast=fast->next;
+            prev=prev->next;
+            nxt=nxt->next;
         }
+        // for(auto x:mp)
+        // {
+        //     if(x.second==1)
+        //     {
+        //         temp->next=new ListNode(x.first); 
+        //         temp=temp->next;
+        //     }
+        // }
         return slow->next->next;
     }
 };
